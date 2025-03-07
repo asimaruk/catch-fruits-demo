@@ -1,4 +1,4 @@
-import { director, System, toRadian, UITransform } from "cc"
+import { director, System, UITransform } from "cc"
 import { EDITOR_NOT_IN_PREVIEW } from "cc/env";
 import FruitComponent from "../FruitComponent";
 import { DropComponent } from "../DropComponent";
@@ -34,8 +34,7 @@ export default class FruitSystem extends System {
 
         const bucketTransform = this.bucket?.inside?.getComponent(UITransform);
         for (const fruit of this.fruits) {
-            const drop = fruit.fruit.getComponent(DropComponent);
-            if (drop && fruit.fruit.node.position.y >= 0) {
+            if (fruit.fruit.node.position.y >= 0) {
                 this.updateDrop(fruit, dt);
             }
             if (fruit.fruit.node.position.y <= 0) {
